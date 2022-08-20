@@ -7,6 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Custom Description
+Кастомная сборка Docker контейнера на основе оригинального репозитория [laravel/laravel](https://github.com/laravel/laravel.git) 
+включает в себя всё необходимое для начала разработки приложения. В сборку входит: Nginx, 
+PHP-8.1-fpm, PostgreSQL, Redis, Adminer, Composer. Достаточно клонировать репозиторий в корень проекта и запустить 
+$ docker-compose up -d --build
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
