@@ -97,3 +97,7 @@ clear-route: ## Очистка кэша путей
 shell-php: ## Войти в контейнер php для комманд composer, вывода версии, списка модулей
 	docker exec -it php-fpm bash
 
+
+
+
+
