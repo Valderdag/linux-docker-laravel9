@@ -19,8 +19,8 @@ Nginx, Node.js, PHP-8.1-fpm, PostgreSQL, Redis, Adminer, Composer.
 
 Makefile содержит необходимые команды для работы с контейнером. Вызов справки $ make help
 Для работы нескольких приложений в разных контейнерах нужно дать уникальные имена контейнерам окружения в docker-compose.yml
-Проблема с правами на папки проекта "permission denied" решается запуском $ make set-access
 
+Проблема с правами на папки проекта "permission denied" решается запуском $ make set-access
 При удалении образов и повторного поднятия окружения в корне проекта - убить папку  _db в storage/ иначе PostgreSQL не поднимется.
 
 ## About Laravel
