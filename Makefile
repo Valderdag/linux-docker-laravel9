@@ -16,16 +16,16 @@ remove: docker-down-clear docker-down-images docker-remove-cont ## Удалит�
 set-access: ## Удаляет проблему с правами на папкии файлы
 	sudo find . -type d -exec chmod 777 {} \;
 	sudo find . -type f -exec chmod 644 {} \;
-docker-ps:
+docker-ps: ## Просмотр контейнеров
 	@printf "\033[0;31m\n" && docker ps -a && printf "\033[1;37m\n"
 
-docker-images:
+docker-images: ## Просмотр образов
 	@printf "\033[0;31m\n" && docker images && printf "\033[1;37m\n"
 
-docker-volumes:
+docker-volumes: ## Просмотр томов
 	@printf "\033[0;31m\n" && docker volume ls && printf "\033[1;37m\n"
 
-docker-network:
+docker-network: ## Просмотр сети
 	@printf "\033[0;31m\n" && docker network ls && printf "\033[1;37m\n"
 
 docker-up: ## Запустить все контейнеры
@@ -43,7 +43,7 @@ docker-remove-cont: ## Остановить контейнеры и удалит
 docker-down-clear: ## Остановить контейнеры, удалить их и удалить volumes
 	docker-compose down -v --remove-orphans
 
-docker-down-images:
+docker-down-images: ## Удаление образов и томов
 	docker system prune -af --volumes
 
 docker-pull: ## Cкачать указанные образы
