@@ -14,8 +14,8 @@ show: docker-ps docker-images docker-volumes docker-network ## Показать 
 remove: docker-down-clear docker-down-images docker-remove-cont ## Удалить все образы, диски, сети, контейнеры
 
 set-access: ## Удаляет проблему с правами на папкии файлы
-	find . -type d -exec chmod 777 {} \;
-	find . -type f -exec chmod 644 {} \;
+	sudo find . -type d -exec chmod 777 {} \;
+	sudo find . -type f -exec chmod 644 {} \;
 docker-ps:
 	@printf "\033[0;31m\n" && docker ps -a && printf "\033[1;37m\n"
 
