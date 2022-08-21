@@ -8,10 +8,15 @@
 </p>
 
 ## Custom Description
-Кастомная сборка Docker контейнера на основе оригинального репозитория [laravel/laravel](https://github.com/laravel/laravel.git) 
-включает в себя всё необходимое для начала разработки приложения. В сборку входит: Nginx, 
-PHP-8.1-fpm, PostgreSQL, Redis, Adminer, Composer. Достаточно клонировать репозиторий в корень проекта и запустить 
-$ docker-compose up -d --build
+Кастомная сборка Docker (docker-compose) на основе оригинального репозитория [laravel/laravel](https://github.com/laravel/laravel.git) 
+включает в себя всё необходимое для начала разработки приложения. При развертывании основного контейнера проекта 
+скачиваются необходимые образы и запускаются контейнеры окружения: Nginx, Node.js, PHP-8.1-fpm, PostgreSQL, Redis, Adminer, Composer. 
+Для поднятия сборки достаточно клонировать репозиторий в корень проекта и запустить $ docker-compose up -d --build
+Makefile содержит необходимые команды для работы с контейнером. Вызов справки $ make help
+Для работы нескольких приложений в разных контейнерах нужно дать уникальные имена контейнерам окружения в docker-compose.yml
+Проблема с правами на папки проекта "permission denied" решается запуском $ make set-access
+При удалении образов и повторного поднятия окружения в корне проекта - убить папку _db в storage/ иначе PostgreSQL не поднимется.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
