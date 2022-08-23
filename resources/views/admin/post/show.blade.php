@@ -10,7 +10,13 @@
                         <div>
                             <a href="{{route('admin.post.edit', $post->id)}}"><i
                                         class="fas fa-pen"></i></a>
-                            <a href=""><i class="fas fa-trash"></i></a>
+                            <form action="{{route('admin.post.delete', $post->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fas fa-trash text-danger" ></i>
+                                </button>
+                            </form>
                         </div>
                     </div><!-- /.col -->
                     <div class="col-sm-6">

@@ -26,6 +26,8 @@ class UpdateRequest extends FormRequest
         return [
             'category_id' => 'required|int',
             'title' => 'required|string',
+            'preview' => 'required|image',
+            'image' => 'required|image',
             'content' => 'required|min:50|max:12000',
             'description' => 'required|min:10|max:512'
         ];

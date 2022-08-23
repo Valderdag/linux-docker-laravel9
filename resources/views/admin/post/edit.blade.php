@@ -25,29 +25,59 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="col-6">
-                            <form action="{{route('admin.post.update', $post->id)}}" method="post" >
+                            <form action="{{route('admin.post.update', $post->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('patch')
+                                <div class="form-group">
+                                    <label>Категория</label>
+                                    <select class="custom-select rounded-0" name="category_id">
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->title}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label>Заголовок статьи</label>
                                     <input type="text" class="form-control" required name="title" value="{{$post->title}}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Картинка</label>
-                                    <div class="custom-file">
-                                        <input type="file" name="image" class="custom-file-input" >
-                                        <label class="custom-file-label" for="customFile" >Выбрать картинку</label>
+                                    <label for="exampleInputFile">Загрузить превью</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="preview" class="custom-file-input" id="exampleInputFile">
+                                            <label class="custom-file-label" for="exampleInputFile">Файл...</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Заргузить</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputFile">Загрузить картинку</label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                                            <label class="custom-file-label" for="exampleInputFile">Файл...</label>
+                                        </div>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">Заргузить</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Текст статьи</label>
-                                    <textarea class="form-control" required rows="15" name="content" value="{{$post->content}}"></textarea>
+                                    <textarea class="form-control" id="summernote" required rows="15" name="content" value="{{$post->content}}"></textarea>
+                                    @error('content')
+                                    <div class="text-danger">Необходимо написать текст статьи</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Краткое содержание</label>
                                     <textarea class="form-control" required rows="4" name="description" value="{{$post->description}}"></textarea>
                                 </div>
+                                <div class="form-group mb-5">
                                 <button type="submit" class="btn btn-primary">Обновить</button>
+                                </div>
                             </form>
                         </div>
                     </div>

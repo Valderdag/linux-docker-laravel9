@@ -25,6 +25,8 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
+            'preview' => 'required|image',
+            'image' => 'required|image',
             'description' => 'required|min:10|max:1000'
         ];
     }
