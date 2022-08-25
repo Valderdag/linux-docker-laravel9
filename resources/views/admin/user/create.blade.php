@@ -53,6 +53,17 @@
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
+                                <div class="form-group" >
+                                    <label>Роль</label>
+                                    <select  name="role" class="form-control">
+                                        @foreach($roles as $id => $role)
+                                            <option value="{{$id}}"
+                                                {{$id == old('role') ? 'selected' : ''}}>
+                                                {{$role}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 <div class="form-group mb-5">
                                 <button type="submit" class="btn-outline-success">Добавить пользователя</button>
                                 </div>

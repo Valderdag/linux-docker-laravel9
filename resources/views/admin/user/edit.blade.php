@@ -52,10 +52,24 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Пароль</label>
-                                    <input type="password" class="form-control" required name="password" value="{{$user->password}}" placeholder="Пароль...">
+                                    <input type="password" class="form-control" name="password" value="{{$user->password}}" placeholder="Пароль...">
                                     @error('password')
                                     <div class="text-danger">{{$message}}</div>
                                     @enderror
+                                </div>
+                                <div class="form-group" >
+                                    <label>Роль</label>
+                                    <select  name="role" class="form-control">
+                                        @foreach($roles as $id => $role)
+                                            <option value="{{$id}}"
+                                                {{$id == $user->role ? 'selected' : ''}}>
+                                                {{$role}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="user_id" value="{{$user->id}}">
                                 </div>
                                 <div class="form-group mb-5">
                                     <button type="submit" class="btn-outline-success">Обновить пользователя</button>

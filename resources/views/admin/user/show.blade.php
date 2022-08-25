@@ -31,7 +31,7 @@
             <div class="container-fluid">
                <div class="row">
                     <div class="pt-3 col-12">
-                        <table class="table">
+                        <table class="table mb-5">
                             <tbody>
                             <tr>
                                 <td>Аватар</td>
@@ -48,6 +48,10 @@
                             <tr>
                                 <td>Email</td>
                                 <td>{{$user->email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Роль</td>
+                                <td>{{$user->role}}</td>
                             </tr>
                             </tbody>
                         </table>

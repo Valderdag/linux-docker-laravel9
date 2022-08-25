@@ -26,8 +26,11 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'avatar' => 'nullable|image',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:6'
+            'email' => 'required|string|email|unique:users,email,' . $this->user_id,
+            'password' => 'required|string|min:6',
+            'user_id' => 'required|integer|exists:users,id',
+            'role' => 'required|integer'
+
         ];
     }
     public function messages()
