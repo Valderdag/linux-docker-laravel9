@@ -23,8 +23,8 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-2">
-                        <a href="{{route('admin.post.create')}}" class="btn btn-outline-success">Добавить статью</a>
+                    <div class="col-3">
+                        <a href="{{route('admin.post.create')}}" class="btn btn-link">Добавить статью</a>
                     </div>
                     <div class="pt-3 col-12">
                         <table class="table table-striped">

@@ -19,8 +19,8 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-2">
-                        <a href="{{route('admin.user.create')}}" class="btn btn-outline-success">Добавить пользователя</a>
+                    <div class="col-3">
+                        <a href="{{route('admin.user.create')}}" class="btn btn-link">Добавить пользователя</a>
                     </div>
                     <div class="pt-3 col-12">
                         <table class="table table-striped">

@@ -1,25 +1,21 @@
 @extends('admin.layouts.admin')
 @section('content')
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="m-0">Добавление категорий</h1>
-                    </div><!-- /.col -->
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Добавление категорий</li>
                         </ol>
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
@@ -36,26 +32,11 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Загрузить превью</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" name="preview" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Файл...</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Заргузить</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputFile">Загрузить картинку</label>
+                                    <label for="exampleInputFile">Изображение категории</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Файл...</label>
-                                        </div>
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">Заргузить</span>
+                                            <label class="custom-file-label" for="exampleInputFile">Изображение...</label>
                                         </div>
                                     </div>
                                 </div>
@@ -67,14 +48,13 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mb-5">
-                                <button type="submit" class="btn btn-primary">Добавить</button>
+                                <button type="submit" class="btn-outline-success">Добавить категорию</button>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
     </div>
 @endsection
