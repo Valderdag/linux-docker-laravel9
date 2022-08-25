@@ -27,15 +27,19 @@
                             <thead>
                             <tr>
                                 <th >ID</th>
+                                <th class="w-25">Аватар</th>
                                 <th>Имя пользователя</th>
+                                <th>Email</th>
                                 <th colspan="3" class="text-center">Действия</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($users as $user)
                                 <tr>
-                                    <th >{{$user->id}}</th>
-                                    <td>{{$user->title}}</td>
+                                    <td>{{$user->id}}</td>
+                                    <td><img class="w-25" src="{{Storage::url($user->avatar)}}" alt="{{$user->name}}"></td>
+                                    <td>{{$user->name}}</td>
+                                    <td>{{$user->email}}</td>
                                     <td class="text-center">
                                         <a href="{{route('admin.user.show', $user->id)}}"> <i
                                                 class="fas fa-eye"></i></a>

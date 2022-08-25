@@ -5,7 +5,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Статья</h1>
+                        <h1 >Статья</h1>
                         <div>
                             <a href="{{route('admin.post.edit', $post->id)}}"><i
                                         class="fas fa-pen"></i></a>

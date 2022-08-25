@@ -8,8 +8,14 @@
                         <h1 class="m-0">Пользователь</h1>
                         <div>
                             <a href="{{route('admin.user.edit', $user->id)}}"><i
-                                        class="fas fa-pen"></i></a>
-                            <a href=""><i class="fas fa-trash"></i></a>
+                                    class="fas fa-pen"></i></a>
+                            <form action="{{route('admin.user.delete', $user->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fas fa-trash text-danger" ></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -28,6 +34,10 @@
                         <table class="table">
                             <tbody>
                             <tr>
+                                <td>Аватар</td>
+                                <td><img src="{{Storage::url($user->avatar)}}" alt="{{$user->name}}"></td>
+                            </tr>
+                            <tr>
                                 <td scope="row">ID</td>
                                 <td scope="row">{{$user->id}}</td>
                             </tr>
@@ -38,10 +48,6 @@
                             <tr>
                                 <td>Email</td>
                                 <td>{{$user->email}}</td>
-                            </tr>
-                            <tr>
-                                <td>Аватар</td>
-                                <td><img src="{{Storage::url($user->avatar)}}" alt="{{$user->name}}"></td>
                             </tr>
                             </tbody>
                         </table>

@@ -18,7 +18,6 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
                         <div class="col-6">
@@ -26,9 +25,9 @@
                                 @csrf
                                 <div class="form-group">
                                     <label>Название категории</label>
-                                    <input type="text" class="form-control" required name="title" value="{{old('title')}}" placeholder="Название ...">
+                                    <input type="text" class="form-control" name="title" value="{{old('title')}}" placeholder="Название ...">
                                     @error('title')
-                                    <div class="text-danger">Необходимо добавить название категории</div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
@@ -39,12 +38,15 @@
                                             <label class="custom-file-label" for="exampleInputFile">Изображение...</label>
                                         </div>
                                     </div>
+                                    @error('image')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Описание категории</label>
-                                    <textarea id="summernote" required name="description" value="{{old('description')}}"></textarea>
+                                    <textarea id="summernote" name="description" value="{{old('description')}}"></textarea>
                                     @error('description')
-                                    <div class="text-danger">Необходимо добавить описание категории</div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-5">

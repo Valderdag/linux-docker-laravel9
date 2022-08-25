@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use phpDocumentor\Reflection\Types\Integer;
 
 class PostTag extends Model
 {
@@ -16,11 +15,13 @@ class PostTag extends Model
     protected static function deletePostTags($post_id): bool
     {
         try {
+            DB::beginTransaction();
             DB::table('post_tags')
                 ->where('post_id', '=', $post_id)
                 ->delete();
+            DB::commit();
         } catch (\Exception $exception) {
-            dd($exception);
+            abort('500');
         }
         return true;
     }

@@ -26,22 +26,31 @@
                                 @method('patch')
                                 <div class="form-group">
                                     <label>Название категории</label>
-                                    <input type="text" class="form-control" required name="title" value="{{$category->title}}">
+                                    <input type="text" class="form-control" name="title" value="{{$category->title}}">
+                                    @error('title')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Изображение категории</label>
+                                    <div class="w-50">
+                                        <img src="{{Storage::url($category->image)}}" alt="{{$category->image}}">
+                                    </div>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
                                             <label class="custom-file-label" for="exampleInputFile">Изображение...</label>
                                         </div>
                                     </div>
+                                    @error('image')
+                                    <div class="text-danger">{{$message}}</div>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Описание категории</label>
-                                    <textarea id="summernote" name="description"></textarea>
+                                    <textarea id="summernote" name="description">{{$category->description}}</textarea>
                                     @error('description')
-                                    <div class="text-danger">Необходимо добавить описание категории</div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-5">

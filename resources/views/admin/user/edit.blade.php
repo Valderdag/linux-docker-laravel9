@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Добавление пользователя</h1>
-                    </div><!-- /.col -->
+                        <h1 class="m-0">Обновление пользователя</h1>
+                    </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Добавление пользователя</li>
+                            <li class="breadcrumb-item active">Обновление пользователя</li>
                         </ol>
                     </div>
                 </div>
@@ -21,17 +21,21 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="col-6">
-                            <form action="{{route('admin.user.update')}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('admin.user.update', $user->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
+                                @method('patch')
                                 <div class="form-group">
                                     <label>Имя пользователя</label>
                                     <input type="text" class="form-control" name="name" value="{{$user->name}}" >
                                     @error('name')
-                                    <div class="text-danger"></div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Загрузить аватар</label>
+                                    <label for="exampleInputFile">Аватар</label>
+                                    <div class="w-25 mb-2">
+                                        <img src="{{Storage::url($user->avatar)}}" alt="{{$user->name}}" class="w-50">
+                                    </div>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" name="avatar" class="custom-file-input" id="exampleInputFile">
@@ -43,18 +47,18 @@
                                     <label>Email</label>
                                     <input type="email" class="form-control" name="email" value="{{$user->email}}">
                                     @error('email')
-                                    <div class="text-danger"></div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Пароль</label>
                                     <input type="password" class="form-control" required name="password" value="{{$user->password}}" placeholder="Пароль...">
                                     @error('password')
-                                    <div class="text-danger"></div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-5">
-                                    <button type="submit" class="btn-outline-success">Добавить пользователя</button>
+                                    <button type="submit" class="btn-outline-success">Обновить пользователя</button>
                                 </div>
                             </form>
                         </div>

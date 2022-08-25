@@ -45,7 +45,7 @@
                                 <div class="form-group">
                                     <label for="exampleInputFile">Изображение</label>
                                     <div class="w-25 mb-2">
-                                        <img src="{{Storage::url($post->image)}}" alt="" class="w-50">
+                                        <img src="{{Storage::url($post->image)}}" alt="{{$post->title}}" class="w-50">
                                     </div>
                                     <div class="input-group">
                                         <div class="custom-file">

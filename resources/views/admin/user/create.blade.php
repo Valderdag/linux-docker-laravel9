@@ -27,30 +27,30 @@
                                     <label>Имя пользователя</label>
                                     <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="Имя...">
                                     @error('name')
-                                    <div class="text-danger"></div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputFile">Загрузить аватар</label>
+                                    <label for="exampleInputFile">Аватар</label>
                                     <div class="input-group">
                                         <div class="custom-file">
                                             <input type="file" name="avatar" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Аватар...</label>
+                                            <label class="custom-file-label" value="{{old('avatar')}}"  for="exampleInputFile">Аватар...</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
-                                    <input type="email" class="form-control" required name="email" value="{{old('email')}}" placeholder="Email...">
+                                    <input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Email...">
                                     @error('email')
-                                    <div class="text-danger"></div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>Пароль</label>
                                     <input type="password" class="form-control" name="password" value="{{old('password')}}" placeholder="Пароль...">
                                     @error('password')
-                                    <div class="text-danger"></div>
+                                    <div class="text-danger">{{$message}}</div>
                                     @enderror
                                 </div>
                                 <div class="form-group mb-5">

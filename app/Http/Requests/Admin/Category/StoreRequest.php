@@ -25,9 +25,20 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'preview' => 'required|image',
             'image' => 'required|image',
-            'description' => 'required|min:10|max:1000'
+            'description' => 'required|min:50|max:1000'
+        ];
+    }
+    public  function messages()
+    {
+        return [
+            'title.required' => 'Название категории обязательно к заполнению',
+            'title.string' => 'Данные должны иметь строковый тип',
+            'image.required' => 'Добавлять изображение обязательно',
+            'image.string' => 'Загружаемый файл должен быть изображением',
+            'description.required' => 'Описание категории обязательно к заполнению',
+            'description.min' => 'Объем текста минимум 50 знаков',
+            'description.max' => 'Оъем текста максимум 1000 знаков'
         ];
     }
 }

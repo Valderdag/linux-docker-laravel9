@@ -8,8 +8,14 @@
                         <h1 class="m-0">Категория </h1>
                         <div>
                             <a href="{{route('admin.category.edit', $category->id)}}"><i
-                                        class="fas fa-pen"></i></a>
-                            <a href=""><i class="fas fa-trash"></i></a>
+                                    class="fas fa-pen"></i></a>
+                            <form action="{{route('admin.category.delete', $category->id)}}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="border-0 bg-transparent">
+                                    <i class="fas fa-trash text-danger" ></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-sm-6">
