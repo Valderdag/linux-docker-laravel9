@@ -18,7 +18,6 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -29,21 +28,37 @@
                     </div>
                     <div class="pt-3 col-12">
                         <table class="table table-striped">
-                            <thead >
+                            <thead>
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Название категории</th>
-                                <th scope="col">Действия</th>
+                                <th >ID</th>
+                                <th>Название категории</th>
+                                <th colspan="3" class="text-center">Действия</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($categories as $row)
-                            <tr>
-                                <th scope="row">{{$row->id}}</th>
-                                <td>{{$row->title}}</td>
-                                <td><span style="padding-right: 30px"><a href="{{route('admin.category.show', $row->id)}}"> <i class="fas fa-eye" ></i></a></span>
-                                <span><a href="{{route('admin.category.edit', $row->id)}}"><i class="fas fa-pen"></i></a></span>
-                            </tr>
+                                <tr>
+                                    <th >{{$row->id}}</th>
+                                    <td>{{$row->title}}</td>
+                                    <td class="text-center">
+                                        <a href="{{route('admin.category.show', $row->id)}}"> <i
+                                                class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{route('admin.category.edit', $row->id)}}"><i
+                                                class="fas fa-pen"></i></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <form action="{{route('admin.category.delete', $row->id)}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="border-0 bg-transparent">
+                                            <i class="fas fa-trash text-danger" ></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    </td>
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

@@ -28,7 +28,10 @@
                             <form action="{{route('admin.tag.update', $tag->id)}}" method="post" >
                                 @csrf
                                 @method('patch')
-
+                                <div class="form-group">
+                                    <label>Имя тега</label>
+                                    <input type="text" class="form-control" required name="title" value="{{$tag->title}}">
+                                </div>
                                 <button type="submit" class="btn btn-primary">Обновить</button>
                             </form>
                         </div>

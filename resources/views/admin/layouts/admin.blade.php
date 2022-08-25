@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{asset('plugins/select2/css/select2.min.css')}}">
+    {{--<link rel="stylesheet" href="{{asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">--}}
     <!-- Theme style -->
     <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
     <!-- Summernote editor -->
@@ -67,6 +70,8 @@
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- Bootstrap 4 -->
 <script src="{{asset('plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- Select2 -->
+<script src="{{asset('plugins/select2/js/select2.full.min.js')}}"></script>
 <!-- Summernote -->
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
 <!-- bs-custom-file-input -->
@@ -80,9 +85,9 @@
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <script>
     $('#summernote').summernote({
-        placeholder: 'Текст..',
-        tabsize: 2,
-        height: 300,
+        placeholder: 'Текст статьи..',
+        tabsize: 5,
+        height: 200,
         toolbar: [
             ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
@@ -95,8 +100,14 @@
     });
     $(function () {
         bsCustomFileInput.init();
+        $('.select2').select2();
     });
 </script>
+<style>
+    .custom-file-input:lang(en)~.custom-file-label::after{
+        content: "Обзор..";
+    }
+</style>
 </body>
 </html>
 

@@ -24,14 +24,16 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-2">
-                        <a href="{{route('admin.post.create')}}" class="btn btn-block btn-primary">Добавить</a>
+                        <a href="{{route('admin.post.create')}}" class="btn btn-outline-success">Добавить статью</a>
                     </div>
                     <div class="pt-3 col-12">
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th >ID</th>
+                                <th>ID</th>
+                                <th>Изображение</th>
                                 <th>Заголовок статьи</th>
+                                <th>Категория</th>
                                 <th>Краткое содержание</th>
                                 <th colspan="3" class="text-center">Действия</th>
                             </tr>
@@ -39,8 +41,10 @@
                             <tbody>
                             @foreach($posts as $row)
                                 <tr>
-                                    <th >{{$row->id}}</th>
+                                    <th>{{$row->id}}</th>
+                                    <th><img class="w-50" src="{{Storage::url($row->image)}}" alt=""</th>
                                     <td>{{$row->title}}</td>
+                                    <td>{{$row->category_id}}</td>
                                     <td>{{$row->description}}</td>
                                     <td class="text-center">
                                         <a href="{{route('admin.post.show', $row->id)}}"> <i

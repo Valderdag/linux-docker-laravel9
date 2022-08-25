@@ -24,12 +24,27 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'required|int',
+            'category_id' => 'required|integer|exists:categories,id',
             'title' => 'required|string',
-            'preview' => 'required|image',
-            'image' => 'required|image',
+            'image' => 'nullable|image',
             'content' => 'required|min:50|max:12000',
-            'description' => 'required|min:10|max:512'
+            'description' => 'required|min:10|max:512',
+            'tag_ids' => 'required|array',
+            'tag_ids.*' => 'required|integer|exists:tags,id',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'title.required' => 'Это поле обязательно для заполнения',
+            'title.string' => 'Данные должны соответствовать строчному типу',
+            'content.required' => 'Статья должна иметь текст',
+            'content.min' => 'Объем текста должен быть минимум 500 символов',
+            'content.max' => 'Объем текста должен быть максимум 12000 символов',
+            'description.required' => 'Краткое содержание обязательно для поисковй оптимизации',
+            'description.min' => 'Объем текста должен быть минимум 50 символови',
+            'description.max' => 'Объем текста должен быть максимум 512 символов',
+            'tag_ids.required' => 'Теги обязательны для поисковй оптимизации'
         ];
     }
 }

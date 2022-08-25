@@ -8,6 +8,18 @@
                     <p>Категории</p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{route('admin.post.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-newspaper"></i>
+                    <p>Статьи</p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('admin.tag.index')}}" class="nav-link">
+                    <i class="nav-icon fas fa-tags"></i>
+                    <p>Теги</p>
+                </a>
+            </li>
         </ul>
     </div>
     <!-- /.sidebar -->

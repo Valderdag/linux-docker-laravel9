@@ -28,7 +28,13 @@
                         <div class="col-6">
                             <form action="{{route('admin.tag.store')}}" method="post" >
                                 @csrf
-
+                                <div class="form-group">
+                                    <label>Название Тега</label>
+                                    <input type="text" class="form-control" required name="title" placeholder="Название ...">
+                                    @error('title')
+                                    <div class="text-danger">Необходимо заполнить название тега</div>
+                                    @enderror
+                                </div>
                                 <button type="submit" class="btn btn-primary">Добавить</button>
                             </form>
                         </div>

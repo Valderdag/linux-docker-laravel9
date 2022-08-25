@@ -38,8 +38,8 @@
                             <tbody>
                             @foreach($tags as $tag)
                                 <tr>
-                                    <th >{{$row->id}}</th>
-                                    <td>{{$row->title}}</td>
+                                    <th >{{$tag->id}}</th>
+                                    <td>{{$tag->title}}</td>
                                     <td class="text-center">
                                         <a href="{{route('admin.tag.show', $tag->id)}}"> <i
                                                 class="fas fa-eye"></i></a>

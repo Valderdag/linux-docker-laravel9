@@ -82,16 +82,16 @@ migrate-refresh: ## Откат и миграция одной командой
 migrate-fresh: ## Удаление таблиц и миграция одной командой
 	docker exec -it php-fpm php artisan migrate:fresh
 
-artisan-key: ## Генерация ключа
+artisan-key: ## Генерация ключа Laravel
 	docker exec -it php-fpm php artisan key:generate
 
-clear-cache: ## Очистка всего кэша
+clear-cache: ## Очистка кэша Laravel
 	docker exec -it php-fpm php artisan cache:clear
 
-clear-view: ## Очистка кэша представлений
+clear-view: ## Очистка кэша представлений Laravel
 	docker exec -it php-fpm php artisan view:clear
 
-clear-route: ## Очистка кэша путей
+clear-route: ## Очистка кэша путей Laravel
 	docker exec -it php-fpm php artisan route:clear
 
 shell-php: ## Войти в контейнер php для комманд composer, вывода версии, списка модулей
