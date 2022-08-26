@@ -55,12 +55,20 @@
                         <a class="nav-link" href="#">Download</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('login')}}"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-gb"></span>Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('register')}}">Register</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </div>
 </header>
 @yield('content')
-<section class="edica-footer-banner-section">
+<section class="edica-footer-banner-section mt-5">
     <div class="container">
         <div class="footer-banner" data-aos="fade-up">
             <h1 class="banner-title">Download it now.</h1>
@@ -72,7 +80,7 @@
         </div>
     </div>
 </section>
-<footer class="edica-footer" data-aos="fade-up">
+<footer class="edica-footer" data-aos="fade-up mt-5">
     <div class="container">
         <div class="row footer-widget-area">
             <div class="col-md-3">

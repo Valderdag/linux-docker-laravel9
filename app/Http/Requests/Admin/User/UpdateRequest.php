@@ -27,7 +27,6 @@ class UpdateRequest extends FormRequest
             'name' => 'required|string',
             'avatar' => 'nullable|image',
             'email' => 'required|string|email|unique:users,email,' . $this->user_id,
-            'password' => 'required|string|min:6',
             'user_id' => 'required|integer|exists:users,id',
             'role' => 'required|integer'
 
@@ -42,9 +41,6 @@ class UpdateRequest extends FormRequest
             'email.required' => 'Email обязательно к заполнению',
             'email.email' => 'Неверный формат',
             'email.unique' => 'Пользователь с таким email уже есть',
-            'password.required' => 'Пароль обязателен к заполнению',
-            'password.string' => 'Пароль должен иметь строковый тип данных',
-            'password.min' => 'Пароль должен содержать минимум 6 знаков'
         ];
     }
 }

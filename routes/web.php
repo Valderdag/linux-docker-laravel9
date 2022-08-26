@@ -18,14 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/info', function () {
     return view('info.index');
 });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 /*
  * SITE
  */
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\Main\IndexController::class, '__invoke'])->name('/');;
-Route::get('/category', [App\Http\Controllers\Category\IndexController::class, '__invoke'])->name('category.index');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/', [App\Http\Controllers\Main\IndexController::class, '__invoke'])->name('/');;
+//Route::get('/category', [App\Http\Controllers\Category\IndexController::class, '__invoke'])->name('category.index');
 /*
  * ADMIN
  */
