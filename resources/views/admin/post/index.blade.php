@@ -35,23 +35,23 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($posts as $row)
+                            @foreach($posts as $post)
                                 <tr>
-                                    <th>{{$row->id}}</th>
-                                    <th><img class="w-50" src="{{Storage::url($row->image)}}" alt=""</th>
-                                    <td>{{$row->title}}</td>
-                                    <td>{{$row->category_id}}</td>
-                                    <td>{{$row->description}}</td>
+                                    <th>{{$post->id}}</th>
+                                    <th><img class="w-50" src="{{Storage::url($post->image)}}" alt=""</th>
+                                    <td>{{$post->title}}</td>
+                                    <td>{{$post->category_id}}</td>
+                                    <td>{{$post->description}}</td>
                                     <td class="text-center">
-                                        <a href="{{route('admin.post.show', $row->id)}}"> <i
+                                        <a href="{{route('admin.post.show', $post->id)}}"> <i
                                                 class="fas fa-eye"></i></a>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{route('admin.post.edit', $row->id)}}"><i
+                                        <a href="{{route('admin.post.edit', $post->id)}}"><i
                                                 class="fas fa-pen"></i></a>
                                     </td>
                                     <td class="text-center">
-                                        <form action="{{route('admin.post.delete', $row->id)}}" method="post">
+                                        <form action="{{route('admin.post.delete', $post->id)}}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="border-0 bg-transparent">

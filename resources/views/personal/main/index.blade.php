@@ -33,7 +33,7 @@
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-warning">
                             <div class="inner">
-                                <h3>20</h3>
+                                <h3>{{count($posts)}}</h3>
                                 <p>Избанных статей</p>
                             </div>
                             <div class="icon">
