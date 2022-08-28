@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/info', function () {
     return view('info.index');
 });
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes(['verify' => true]);
 Route::group(['namespace' => 'App\Http\Controllers'], function () {
-    Route::get('/home', 'HomeController')->name('home');
-//ADMINISTRATOR
+    //SITE
+    Route::group(['namespace' => 'Main'], function (){
+        Route::get('/', 'IndexController')->name('main.index');
+    });
+    /*Route::group(['namespace' => 'Auth'], function (){
+        Route::get('/login', 'LoginController')->name('auth.login');
+        Route::get('/register', 'RegisterController')->name('auth.register');
+        Route::get('/verify', 'VerificationController')->name('auth.verify');
+    });*/
+    //ADMINISTRATOR
     Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
             Route::group(['namespace' => 'Main'], function () {
@@ -70,6 +75,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             });
         });
     });
+    //PERSONAL CABINET
     Route::group(['middleware' => ['auth', 'verified']], function () {
         Route::group(['namespace' => 'Personal', 'prefix' => 'personal'], function () {
             Route::group(['namespace' => 'Main'], function () {
