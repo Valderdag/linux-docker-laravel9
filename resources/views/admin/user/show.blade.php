@@ -36,7 +36,7 @@
                             <tbody>
                             <tr>
                                 <td>Аватар</td>
-                                <td><img src="{{Storage::url($user->avatar)}}" alt="{{$user->name}}"></td>
+                                <td><img class="w-100" src="{{Storage::url($user->avatar)}}" alt="{{$user->name}}"></td>
                             </tr>
                             <tr>
                                 <td scope="row">ID</td>

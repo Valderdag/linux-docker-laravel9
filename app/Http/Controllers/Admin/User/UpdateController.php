@@ -22,7 +22,7 @@ class UpdateController extends Controller
         if (isset($data['password'])):
             $data['password'] = Hash::make($data['password'] );
         else:
-            $data['avatar'] = $user->password;
+            $data['password'] = $user->password;
         endif;
         $user->update($data);
 
