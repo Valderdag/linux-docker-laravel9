@@ -75,10 +75,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
             Route::group(['namespace' => 'Main'], function () {
                 Route::get('/', 'IndexController')->name('personal.main.index');
             });
-            Route::group(['namespace' => 'Liked'], function () {
+            Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], function () {
                 Route::get('/', 'IndexController')->name('personal.liked.index');
             });
-            Route::group(['namespace' => 'Comment'], function () {
+            Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], function () {
                 Route::get('/', 'IndexController')->name('personal.comment.index');
             });
         });
