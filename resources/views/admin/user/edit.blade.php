@@ -9,8 +9,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Обновление пользователя</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.main.index')}}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.user.index')}}">Пользователи</a></li>
+                            <li class="breadcrumb-item active">Обновление пользователя {{$user->name}}</li>
                         </ol>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Аватар</label>
-                                    <div class="w-25 mb-2">
+                                    <div class="mb-2">
                                         <img src="{{Storage::url($user->avatar)}}" alt="{{$user->name}}" class="w-50">
                                     </div>
                                     <div class="input-group">

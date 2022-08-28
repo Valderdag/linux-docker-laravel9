@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'category_id' => 'required|integer|exists:categories,id',
             'title' => 'required|string',
-            'image' => 'nullable|image',
+            'image' => 'nullable|image|max:1000',
             'content' => 'required|min:50|max:12000',
             'description' => 'required|min:10|max:512',
             'tag_ids' => 'required|array',
@@ -38,6 +38,8 @@ class UpdateRequest extends FormRequest
         return [
             'title.required' => 'Это поле обязательно для заполнения',
             'title.string' => 'Данные должны соответствовать строчному типу',
+            'image.image' => 'Загружаемый файл должен быть изображением',
+            'image.max' => 'Загружаемое изображение должно быть не более 1М',
             'content.required' => 'Статья должна иметь текст',
             'content.min' => 'Объем текста должен быть минимум 500 символов',
             'content.max' => 'Объем текста должен быть максимум 12000 символов',

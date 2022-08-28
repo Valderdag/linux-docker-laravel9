@@ -5,12 +5,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Редактирование статьи</h1>
+                        <h1 class="m-0">Редактирование статьи {{$post->title}}</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                            <li class="breadcrumb-item active">Редактирование статьи</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.main.index')}}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.post.index')}}">Статьи</a></li>
+                            <li class="breadcrumb-item active">Редактирование статьи {{$post->title}}</li>
                         </ol>
                     </div>
                 </div>

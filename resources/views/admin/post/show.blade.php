@@ -20,8 +20,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">{{$post->title}}</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.main.index')}}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.post.index')}}">Статьи</a></li>
+                            <li class="breadcrumb-item active">Статья {{$post->title}}</li>
                         </ol>
                     </div>
                 </div>
@@ -29,7 +30,6 @@
         </div>
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="pt-3 col-12 mb-5">
                         <table class="table">

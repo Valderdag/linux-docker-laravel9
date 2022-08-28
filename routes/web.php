@@ -12,9 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
- * PHP
- */
 Route::get('/info', function () {
     return view('info.index');
 });
@@ -23,48 +20,67 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-/*
- * SITE
- */
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/', [App\Http\Controllers\Main\IndexController::class, '__invoke'])->name('/');;
-//Route::get('/category', [App\Http\Controllers\Category\IndexController::class, '__invoke'])->name('category.index');
-/*
- * ADMIN
- */
-Route::group(['middleware' => ['auth', 'admin']], function () {
-//Main
-    Route::get('/admin', [App\Http\Controllers\Admin\Main\IndexController::class, '__invoke'])->name('admin.index');
-//Category
-    Route::get('/admin/category', [App\Http\Controllers\Admin\Category\IndexController::class, '__invoke'])->name('admin.category.index');
-    Route::get('/admin/category/create', [App\Http\Controllers\Admin\Category\CreateController::class, '__invoke'])->name('admin.category.create');
-    Route::post('/admin/category/store', [App\Http\Controllers\Admin\Category\StoreController::class, '__invoke'])->name('admin.category.store');
-    Route::get('/category/{category}', [App\Http\Controllers\Admin\Category\ShowController::class, '__invoke'])->name('admin.category.show');
-    Route::get('/category/{category}/edit', [App\Http\Controllers\Admin\Category\EditController::class, '__invoke'])->name('admin.category.edit');
-    Route::patch('/category/{category}', [App\Http\Controllers\Admin\Category\UpdateController::class, '__invoke'])->name('admin.category.update');
-    Route::delete('/category/{category}', [App\Http\Controllers\Admin\Category\DeleteController::class, '__invoke'])->name('admin.category.delete');
-//Tags
-    Route::get('/admin/tag', [App\Http\Controllers\Admin\Tag\IndexController::class, '__invoke'])->name('admin.tag.index');
-    Route::get('/admin/tag/create', [App\Http\Controllers\Admin\Tag\CreateController::class, '__invoke'])->name('admin.tag.create');
-    Route::post('/admin/tag/store', [App\Http\Controllers\Admin\Tag\StoreController::class, '__invoke'])->name('admin.tag.store');
-    Route::get('/tag/{tag}', [App\Http\Controllers\Admin\Tag\ShowController::class, '__invoke'])->name('admin.tag.show');
-    Route::get('/tag/{tag}/edit', [App\Http\Controllers\Admin\Tag\EditController::class, '__invoke'])->name('admin.tag.edit');
-    Route::patch('/tag/{tag}', [App\Http\Controllers\Admin\Tag\UpdateController::class, '__invoke'])->name('admin.tag.update');
-    Route::delete('/tag/{tag}', [App\Http\Controllers\Admin\Tag\DeleteController::class, '__invoke'])->name('admin.tag.delete');
-//Posts
-    Route::get('/admin/post', [App\Http\Controllers\Admin\Post\IndexController::class, '__invoke'])->name('admin.post.index');
-    Route::get('/admin/post/create', [App\Http\Controllers\Admin\Post\CreateController::class, '__invoke'])->name('admin.post.create');
-    Route::post('/admin/post/store', [App\Http\Controllers\Admin\Post\StoreController::class, '__invoke'])->name('admin.post.store');
-    Route::get('/post/{post}', [App\Http\Controllers\Admin\Post\ShowController::class, '__invoke'])->name('admin.post.show');
-    Route::get('/post/{post}/edit', [App\Http\Controllers\Admin\Post\EditController::class, '__invoke'])->name('admin.post.edit');
-    Route::patch('/post/{post}', [App\Http\Controllers\Admin\Post\UpdateController::class, '__invoke'])->name('admin.post.update');
-    Route::delete('/post/{post}', [App\Http\Controllers\Admin\Post\DeleteController::class, '__invoke'])->name('admin.post.delete');
-//Users
-    Route::get('/admin/user', [App\Http\Controllers\Admin\User\IndexController::class, '__invoke'])->name('admin.user.index');
-    Route::get('/admin/user/create', [App\Http\Controllers\Admin\User\CreateController::class, '__invoke'])->name('admin.user.create');
-    Route::post('/admin/user/store', [App\Http\Controllers\Admin\User\StoreController::class, '__invoke'])->name('admin.user.store');
-    Route::get('/user/{user}', [App\Http\Controllers\Admin\User\ShowController::class, '__invoke'])->name('admin.user.show');
-    Route::get('/user/{user}/edit', [App\Http\Controllers\Admin\User\EditController::class, '__invoke'])->name('admin.user.edit');
-    Route::patch('/user/{user}', [App\Http\Controllers\Admin\User\UpdateController::class, '__invoke'])->name('admin.user.update');
-    Route::delete('/user/{user}', [App\Http\Controllers\Admin\User\DeleteController::class, '__invoke'])->name('admin.user.delete');
+Route::group(['namespace' => 'App\Http\Controllers'], function () {
+    Route::get('/home', 'HomeController')->name('home');
+//ADMINISTRATOR
+    Route::group(['middleware' => ['auth', 'admin']], function () {
+        Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+            Route::group(['namespace' => 'Main'], function () {
+                Route::get('/', 'IndexController')->name('admin.main.index');
+            });
+
+            Route::group(['namespace' => 'Category', 'prefix' => 'category'], function () {
+                Route::get('/', 'IndexController')->name('admin.category.index');
+                Route::get('/create', 'CreateController')->name('admin.category.create');
+                Route::post('/store', 'StoreController')->name('admin.category.store');
+                Route::get('/{category}', 'ShowController')->name('admin.category.show');
+                Route::get('/{category}/edit', 'EditController')->name('admin.category.edit');
+                Route::patch('/{category}', 'UpdateController')->name('admin.category.update');
+                Route::delete('/{category}', 'DeleteController')->name('admin.category.delete');
+            });
+
+            Route::group(['namespace' => 'Tag', 'prefix' => 'tag'], function () {
+                Route::get('/', 'IndexController')->name('admin.tag.index');
+                Route::get('/create', 'CreateController')->name('admin.tag.create');
+                Route::post('/store', 'StoreController')->name('admin.tag.store');
+                Route::get('/{tag}', 'ShowController')->name('admin.tag.show');
+                Route::get('/{tag}/edit', 'EditController')->name('admin.tag.edit');
+                Route::patch('/{tag}', 'UpdateController')->name('admin.tag.update');
+                Route::delete('/{tag}', 'DeleteController')->name('admin.tag.delete');
+            });
+
+            Route::group(['namespace' => 'Post', 'prefix' => 'post'], function () {
+                Route::get('/', 'IndexController')->name('admin.post.index');
+                Route::get('/create', 'CreateController')->name('admin.post.create');
+                Route::post('/store', 'StoreController')->name('admin.post.store');
+                Route::get('/{post}', 'ShowController')->name('admin.post.show');
+                Route::get('/{post}/edit', 'EditController')->name('admin.post.edit');
+                Route::patch('/{post}', 'UpdateController')->name('admin.post.update');
+                Route::delete('/{post}', 'DeleteController')->name('admin.post.delete');
+            });
+
+            Route::group(['namespace' => 'User', 'prefix' => 'user'], function () {
+                Route::get('/', 'IndexController')->name('admin.user.index');
+                Route::get('/create', 'CreateController')->name('admin.user.create');
+                Route::get('/store', 'StoreController')->name('admin.user.store');
+                Route::get('/{user}', 'ShowController')->name('admin.user.show');
+                Route::get('/{user}/edit', 'EditController')->name('admin.user.edit');
+                Route::patch('/{user}', 'UpdateController')->name('admin.user.update');
+                Route::delete('/{user}', 'DeleteController')->name('admin.user.delete');
+            });
+        });
+    });
+    Route::group(['middleware' => ['auth', 'verified']], function () {
+        Route::group(['namespace' => 'Personal', 'prefix' => 'personal'], function () {
+            Route::group(['namespace' => 'Main'], function () {
+                Route::get('/', 'IndexController')->name('personal.main.index');
+            });
+            Route::group(['namespace' => 'Liked'], function () {
+                Route::get('/', 'IndexController')->name('personal.liked.index');
+            });
+            Route::group(['namespace' => 'Comment'], function () {
+                Route::get('/', 'IndexController')->name('personal.comment.index');
+            });
+        });
+    });
 });

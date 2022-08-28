@@ -9,8 +9,9 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Редактирование категорий</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.main.index')}}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.category.index')}}">Категории</a></li>
+                            <li class="breadcrumb-item active">Редактирование категории {{$category->title}}</li>
                         </ol>
                     </div>
                 </div>
@@ -33,8 +34,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">Изображение категории</label>
-                                    <div class="w-50">
-                                        <img src="{{Storage::url($category->image)}}" alt="{{$category->image}}">
+                                    <div class="mb-3">
+                                        <img class="w-50" src="{{Storage::url($category->image)}}" alt="{{$category->image}}">
                                     </div>
                                     <div class="input-group">
                                         <div class="custom-file">

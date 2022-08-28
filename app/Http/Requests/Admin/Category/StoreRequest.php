@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'image' => 'required|image',
+            'image' => 'required|image|max:1000',
             'description' => 'required|min:50|max:1000'
         ];
     }
@@ -35,10 +35,11 @@ class StoreRequest extends FormRequest
             'title.required' => 'Название категории обязательно к заполнению',
             'title.string' => 'Данные должны иметь строковый тип',
             'image.required' => 'Добавлять изображение обязательно',
-            'image.string' => 'Загружаемый файл должен быть изображением',
+            'image.image' => 'Загружаемый файл должен быть изображением',
+            'image.max' => 'Загружаемое изображение должно быть не более 1М',
             'description.required' => 'Описание категории обязательно к заполнению',
             'description.min' => 'Объем текста минимум 50 знаков',
-            'description.max' => 'Оъем текста максимум 1000 знаков'
+            'description.max' => 'Объем текста максимум 1000 знаков'
         ];
     }
 }
