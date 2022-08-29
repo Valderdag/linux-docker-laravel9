@@ -17,12 +17,16 @@ class Post extends Model
         'description'
     ];
 
-    public function tags()
+    public function tags ()
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
-    public function category()
+    public function category ()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+    public function getLikedUsers ()
+    {
+        return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id');
     }
 }
