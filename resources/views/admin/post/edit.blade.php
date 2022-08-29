@@ -66,7 +66,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Краткое содержание</label>
+                                    <label>Описание</label>
                                     <textarea class="form-control" rows="4" name="description" >{{$post->description}}</textarea>
                                     @error('description')
                                     <div class="text-danger">{{$message}}</div>

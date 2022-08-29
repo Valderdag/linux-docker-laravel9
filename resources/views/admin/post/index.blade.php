@@ -28,19 +28,20 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Изображение</th>
-                                <th>Заголовок статьи</th>
+                                <th>Заголовок</th>
                                 <th>Категория</th>
-                                <th>Краткое содержание</th>
+                                <th>Описание</th>
                                 <th colspan="3" class="text-center">Действия</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($posts as $post)
                                 <tr>
-                                    <th>{{$post->id}}</th>
-                                    <th><img class="w-50" src="{{Storage::url($post->image)}}" alt=""</th>
+                                    <td>{{$post->id}}</td>
+                                    <td><img class="w-50" src="{{Storage::url($post->image)}}" alt="{{$post->title}}">
+                                    </td>
                                     <td>{{$post->title}}</td>
-                                    <td>{{$post->category_id}}</td>
+                                    <td>{{$post->category->title}}</td>
                                     <td>{{$post->description}}</td>
                                     <td class="text-center">
                                         <a href="{{route('admin.post.show', $post->id)}}"> <i
@@ -55,10 +56,9 @@
                                             @csrf
                                             @method('delete')
                                             <button type="submit" class="border-0 bg-transparent">
-                                            <i class="fas fa-trash text-danger" ></i>
+                                                <i class="fas fa-trash text-danger"></i>
                                             </button>
                                         </form>
-                                    </td>
                                     </td>
                                 </tr>
                             @endforeach

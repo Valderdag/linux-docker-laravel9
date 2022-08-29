@@ -53,8 +53,8 @@
     @include('admin.includes.sidebar')
     @yield('content')
     <footer class="main-footer">
-        <strong>Copyright &copy; Voha Kubanskiy</strong>
-        All rights reserved super angry Dog
+        <strong>Copyright &copy; Voha Kubanskiy.</strong>
+        All rights reserved Very Angry Dog.
         <div class="float-right d-none d-sm-inline-block">
             <b>Version</b> 0.0.1
         </div>

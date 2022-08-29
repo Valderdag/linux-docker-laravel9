@@ -27,24 +27,18 @@
                         <a class="nav-link" href="{{route('main.index')}}">Главная<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">О себе</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link dropdown-toggle" href="#" id="blogDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Блог</a>
-                        {{--<div class="dropdown-menu" aria-labelledby="blogDropdown">
-                            <a class="dropdown-item" href="blog.html">Blog Archive</a>
-                            <a class="dropdown-item" href="blog-single.html">Blog Post</a>
-                        </div>--}}
+                        <a class="nav-link" href="{{route('about.index')}}">О себе</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Страницы</a>
-                        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
+                        {{--<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                            @foreach
                             <a class="dropdown-item" href="404.html">404</a>
-                            <a class="dropdown-item" href="coming-soon.html">Coming Soon</a>
-                        </div>
+                            @endforeach
+                        </div>--}}
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Контакты</a>
+                        <a class="nav-link" href="{{route('contact.index')}}">Контакты</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0">

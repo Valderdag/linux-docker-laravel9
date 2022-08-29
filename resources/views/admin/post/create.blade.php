@@ -63,7 +63,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Краткое содержание</label>
+                                    <label>Описание</label>
                                     <textarea class="form-control" rows="4" name="description"
                                               value="{{old('description')}}" placeholder="Описание ..."></textarea>
                                     @error('description')
