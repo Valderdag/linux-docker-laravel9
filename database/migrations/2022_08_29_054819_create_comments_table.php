@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('comment', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('user_id');
             $table->text('message');
+            $table->timestamps();
         });
     }
 
@@ -27,10 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('comment', function (Blueprint $table) {
-            $table->dropColumn('post_id');
-            $table->dropColumn('user_id');
-            $table->dropColumn('message');
-        });
+        Schema::dropIfExists('comments');
     }
 };
