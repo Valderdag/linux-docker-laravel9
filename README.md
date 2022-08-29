@@ -7,27 +7,16 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Custom Description
-Кастомная сборка Docker (docker-compose) на основе оригинального репозитория [laravel/laravel](https://github.com/laravel/laravel.git) 
-включает в себя всё необходимое для начала разработки приложения. 
+## Description
+Блог на основе сборки Laravel9+Nginx+Node.js+PHP8.1-fpm(pdo_pgsql)+Composer+Redis+PostgreSQL+Adminer
 
-При развертывании основного контейнера проекта скачиваются необходимые образы и запускаются контейнеры окружения: 
+Имеет админку с возможностью добавлять, редактировать, удалять категории, посты, теги, пользователей. 
 
-Nginx, Node.js, PHP-8.1.1-fpm(pdo_pgsql), PostgreSQL, Redis, Adminer, Composer. 
+Кабинет пользователя где реализавана возможность просматривать, редактировать, удалять свои комментарии, 
 
-Для поднятия сборки достаточно клонировать репозиторий в корень проекта и запустить 
+понравившиеся статьи.
 
-$ docker-compose up -d --build
-
-Makefile содержит необходимые команды для работы с контейнером. 
-
-Вызов справки $ make help
-
-Для работы нескольких приложений в разных контейнерах нужно дать уникальные имена контейнерам окружения в docker-compose.yml
-
-Проблема с правами на папки проекта "permission denied" решается запуском $ make set-access
-
-При удалении образов и повторного поднятия окружения в корне проекта - убить папку  _db в storage/ иначе PostgreSQL не поднимется.
+Фронтенд реализаван на Bootstrap. Админка и кабинет пользователя AdminLTE 3.
 
 ## License
 
