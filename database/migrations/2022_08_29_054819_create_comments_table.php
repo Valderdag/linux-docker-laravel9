@@ -19,6 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('message');
             $table->timestamps();
+
+            $table->index('post_id', 'comment_post_idx');
+            $table->index('user_id', 'comment_user_idx');
+
+            $table->foreign('post_id', 'comment_post_fk')->on('posts')->references('id');
+            $table->foreign('user_id', 'comment_user_fk')->on('users')->references('id');
         });
     }
 
