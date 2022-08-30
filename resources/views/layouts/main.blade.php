@@ -43,7 +43,7 @@
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('login')}}"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-ru"></span> Войти</a>
+                        <a class="nav-link" href="{{route('personal.main.index')}}"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-ru"></span> Войти</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('register')}}">Регистрация</a>

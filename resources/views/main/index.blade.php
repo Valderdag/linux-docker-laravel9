@@ -29,7 +29,7 @@
                                         <img src="{{Storage::url($randomPost->image)}}" alt="{{$randomPost->title}}">
                                     </div>
                                     <p class="blog-post-category">{{$randomPost->title}}</p>
-                                    <a href="#!" class="blog-post-permalink">
+                                    <a href="{{route('post.index', $post->id)}}" class="blog-post-permalink">
                                         <h6 class="blog-post-title">{{$randomPost->category->title}}</h6>
                                     </a>
                                 </div>
