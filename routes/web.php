@@ -30,6 +30,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::group(['namespace' => 'Comment', 'prefix' => '{post}'], function (){
             Route::post('/', 'StoreController')->name('post.comment.store');
         });
+        Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function (){
+            Route::post('/', 'StoreController')->name('post.like.store');
+        });
     });
     Route::group(['namespace' => 'About', 'prefix' => 'about'], function (){
         Route::get('/', 'IndexController')->name('about.index');

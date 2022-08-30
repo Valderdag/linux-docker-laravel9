@@ -14,6 +14,29 @@
                 <div class="row">
                     {!! $post->content !!}
                 </div>
+                <div class="py-3">
+                    @auth()
+                        <form action="{{route('post.like.store', $post->id)}}" method="post">
+                            @csrf
+                            <span>{{$post->liked_users_count}}</span>
+                            <button type="submit" name="like" class="border-0 bg-transparent">
+                                @auth()
+                                    @if(auth()->user()->likedPosts->contains($post->id))
+                                        <i class="fas fa-heart"></i>
+                                    @else
+                                        <i class="far fa-heart"></i>
+                                    @endif
+                                @endauth
+                            </button>
+                        </form>
+                    @endauth
+                    @guest()
+                        <div>
+                            <span>{{$post->liked_users_count}}</span>
+                            <i class="far fa-heart"></i>
+                        </div>
+                    @endguest
+                </div>
             </section>
             <div class="row">
                 <div class="col-lg-9 mx-auto">
@@ -25,7 +48,7 @@
                                     <img src="{{Storage::url($relatedPost->image)}}" alt="related post"
                                          class="post-thumbnail w-50">
                                     <p class="post-category">{{$relatedPost->category->title}}</p>
-                                    <a href="{{route('post.index', $post->id)}}">
+                                    <a href="{{route('post.index', $relatedPost->id)}}">
                                         <h6 class="post-title">{{$relatedPost->title}}</h6>
                                     </a>
                                 </div>

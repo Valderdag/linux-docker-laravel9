@@ -15,7 +15,6 @@ class StoreController extends Controller
         $data['post_id'] = $post->id;
         $data['user_id'] = auth()->user()->id;
         Comment::create($data);
-
         return redirect()->route('post.index', $post->id);
     }
 }
