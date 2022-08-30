@@ -11,7 +11,7 @@
                                 <img src="{{Storage::url($post->image)}}" alt="blog post">
                             </div>
                             <p class="blog-post-category">{{$post->category->title}}</p>
-                            <a href="#!" class="blog-post-permalink">
+                            <a href="{{route('post.index', $post->id)}}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{$post->title}}</h6>
                             </a>
                         </div>

@@ -26,7 +26,10 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/', 'IndexController')->name('category.index');
     });
     Route::group(['namespace' => 'Post', 'prefix' => 'post'], function (){
-        Route::get('/', 'IndexController')->name('post.index');
+        Route::get('/{post}', 'IndexController')->name('post.index');
+        Route::group(['namespace' => 'Comment', 'prefix' => '{post}'], function (){
+            Route::post('/', 'StoreController')->name('post.comment.store');
+        });
     });
     Route::group(['namespace' => 'About', 'prefix' => 'about'], function (){
         Route::get('/', 'IndexController')->name('about.index');
