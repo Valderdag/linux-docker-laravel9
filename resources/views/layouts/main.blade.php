@@ -7,47 +7,70 @@
     <title>Edica :: Home</title>
     <link rel="stylesheet" href="{{asset('assets/vendors/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/vendors/font-awesome/css/all.min.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/vendors/aos/aos.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-        <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></script>
-        <script src="{{asset('assets/js/loader.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('assets/vendors/aos/aos.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <script src="{{asset('assets/vendors/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/loader.js')}}"></script>
 </head>
 <body>
 <div class="edica-loader"></div>
 <header class="edica-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="{{route('main.index')}}"><img src="{{asset('assets/images/logo.svg')}}" alt="Edica"></a>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="{{route('main.index')}}"><img src="{{asset('assets/images/logo.svg')}}"
+                                                                        alt="Edica"></a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav"
+                    aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
+                    {{--<li class="nav-item active">
                         <a class="nav-link" href="{{route('main.index')}}">Главная<span class="sr-only">(current)</span></a>
+                    </li>--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('category.main.index')}}">Категории</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('about.index')}}">О себе</a>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
-                        {{--<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    {{--<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{route('category.index')}}" id="pagesDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Категории</a>
+                        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                             @foreach
                             <a class="dropdown-item" href="404.html">404</a>
                             @endforeach
-                        </div>--}}
-                    </li>
+                        </div>
+                    </li>--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('contact.index')}}">Контакты</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('personal.main.index')}}"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-ru"></span> Войти</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{route('register')}}">Регистрация</a>
-                    </li>
+                    @guest()
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('personal.main.index')}}"><span
+                                    class="flag-icon flag-icon-squared rounded-circle flag-icon-ru"></span> Войти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('register')}}">Регистрация</a>
+                        </li>
+                        @endguest
+                        </li>
+                        @auth()
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{route('personal.main.index')}}"><span
+                                            class="flag-icon flag-icon-squared rounded-circle flag-icon-ru"></span>
+                                        Кабинет</a>
+                            </li>
+                            <li class="nav-item">
+                                <form action="{{route('logout')}}" method="post">
+                                    @csrf
+                                    <button type="submit" class="nav-link border-0 bg-transparent">
+                                        Выйти
+                                    </button>
+                                </form>
+                        @endauth
                 </ul>
             </div>
         </nav>
@@ -59,10 +82,15 @@
         <div class="footer-banner" data-aos="fade-up">
             <h1 class="banner-title">Download it now.</h1>
             <div class="banner-btns-wrapper">
-                <button class="btn btn-success"> <img src="{{asset('assets/images/apple@1x.svg')}}" alt="ios" class="mr-2"> App Store</button>
-                <button class="btn btn-success"> <img src="{{asset('assets/images/android@1x.svg')}}" alt="android" class="mr-2"> Google Play</button>
+                <button class="btn btn-success"><img src="{{asset('assets/images/apple@1x.svg')}}" alt="ios"
+                                                     class="mr-2"> App Store
+                </button>
+                <button class="btn btn-success"><img src="{{asset('assets/images/android@1x.svg')}}" alt="android"
+                                                     class="mr-2"> Google Play
+                </button>
             </div>
-            <p class="banner-text">Add some helper text here to explain the finer details of your <br> product or service.</p>
+            <p class="banner-text">Add some helper text here to explain the finer details of your <br> product or
+                service.</p>
         </div>
     </div>
 </section>
@@ -73,8 +101,8 @@
                 <a href="index.html" class="footer-brand-wrapper">
                     <img src="{{asset('assets/images/logo.svg')}}" alt="edica logo">
                 </a>
-                <p class="contact-details">hello@edica.com</p>
-                <p class="contact-details">+23 3000 000 00</p>
+                <p class="contact-details">kubanskiy80@bk.ru</p>
+                <p class="contact-details">+7 918 272 89 15</p>
                 <nav class="footer-social-links">
                     <a href="#!"><i class="fab fa-facebook-f"></i></a>
                     <a href="#!"><i class="fab fa-twitter"></i></a>
@@ -104,15 +132,17 @@
             </div>
             <div class="col-md-3">
                 <div class="dropdown footer-country-dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="footerCountryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="flag-icon flag-icon-gb flag-icon-squared"></span> United Kingdom <i class="fas fa-chevron-down ml-2"></i>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="footerCountryDropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="flag-icon flag-icon-ru flag-icon-squared"></span> Россия <i
+                            class="fas fa-chevron-down ml-2"></i>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="footerCountryDropdown">
                         <button class="dropdown-item" href="#">
-                            <span class="flag-icon flag-icon-us flag-icon-squared"></span> United States
+                            <span class="flag-icon flag-icon-by flag-icon-squared"></span> Белоруссия
                         </button>
                         <button class="dropdown-item" href="#">
-                            <span class="flag-icon flag-icon-au flag-icon-squared"></span> Australia
+                            <span class="flag-icon flag-icon-kz flag-icon-squared"></span> Казахстан
                         </button>
                     </div>
                 </div>
@@ -124,7 +154,9 @@
                 <a href="#!">Terms</a>
                 <a href="#!">Site Map</a>
             </nav>
-            <p class="mb-0">© Edica. 2020 <a href="https://www.bootstrapdash.com" target="_blank" rel="noopener noreferrer" class="text-reset">bootstrapdash</a> . All rights reserved.</p>
+            <p class="mb-0">© Блог. {{date('Y')}} <a href="https://github.com/Valderdag" target="_blank"
+                                                     rel="noopener noreferrer" class="text-reset">Kubanskiy</a> . Все
+                права защищены злой собакой.</p>
         </div>
     </div>
 </footer>

@@ -11,26 +11,28 @@
                                 <img src="{{Storage::url($post->image)}}" alt="blog post">
                             </div>
                             <div class="d-flex justify-content-between">
-                            <p class="blog-post-category">{{$post->category->title}}</p>
+                                <a href="{{route('category.category.index', $post->category->id)}}">
+                                    <p class="blog-post-category">{{$post->category->title}}</p>
+                                </a>
                                 @auth()
-                                <form action="{{route('post.like.store', $post->id)}}" method="post">
-                                    @csrf
-                                    <span>{{$post->liked_users_count}}</span>
-                                    <button type="submit" name="like" class="border-0 bg-transparent">
-                                        @auth()
-                                            @if(auth()->user()->likedPosts->contains($post->id))
-                                                <i class="fas fa-heart"></i>
-                                            @else
-                                                <i class="far fa-heart"></i>
-                                            @endif
-                                        @endauth
-                                    </button>
-                                </form>
+                                    <form action="{{route('post.like.store', $post->id)}}" method="post">
+                                        @csrf
+                                        <span>{{$post->liked_users_count}}</span>
+                                        <button type="submit" name="like" class="border-0 bg-transparent">
+                                            @auth()
+                                                @if(auth()->user()->likedPosts->contains($post->id))
+                                                    <i class="fas fa-heart"></i>
+                                                @else
+                                                    <i class="far fa-heart"></i>
+                                                @endif
+                                            @endauth
+                                        </button>
+                                    </form>
                                 @endauth
                                 @guest()
                                     <div>
-                                    <span>{{$post->liked_users_count}}</span>
-                                    <i class="far fa-heart"></i>
+                                        <span>{{$post->liked_users_count}}</span>
+                                        <i class="far fa-heart"></i>
                                     </div>
                                 @endguest
                             </div>
@@ -51,8 +53,8 @@
                                     <div class="blog-post-thumbnail-wrapper">
                                         <img src="{{Storage::url($randomPost->image)}}" alt="{{$randomPost->title}}">
                                     </div>
-                                        <p class="blog-post-category">{{$randomPost->category->title}}</p>
-                                        <a href="{{route('post.index', $randomPost->id)}}" class="blog-post-permalink">
+                                    <p class="blog-post-category">{{$randomPost->category->title}}</p>
+                                    <a href="{{route('post.index', $randomPost->id)}}" class="blog-post-permalink">
                                         <h6 class="blog-post-title">{{$randomPost->title}}</h6>
                                     </a>
                                 </div>

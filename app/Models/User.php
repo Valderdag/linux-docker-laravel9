@@ -14,16 +14,14 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasApiTokens, HasFactory, Notifiable;
 
     const ROLE_ADMIN = 0;
-    const ROLE_GUEST = 1;
+    const ROLE_AUTHOR = 1;
 
     public static function getRoles()
     {
         return [
             self::ROLE_ADMIN => 'Админ',
-            self::ROLE_GUEST => 'Гость',
+            self::ROLE_AUTHOR  => 'Автор',
         ];
-
-
     }
 
     /**

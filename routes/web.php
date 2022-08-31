@@ -23,7 +23,12 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/', 'IndexController')->name('main.index');
     });
     Route::group(['namespace' => 'Category', 'prefix' => 'category'], function (){
-        Route::get('/', 'IndexController')->name('category.index');
+        Route::group(['namespace' => 'Main'], function (){
+            Route::get('/', 'IndexController')->name('category.main.index');
+        });
+        Route::group(['namespace' => 'Category', 'prefix' => '{category}'], function (){
+            Route::get('/', 'IndexController')->name('category.category.index');
+        });
     });
     Route::group(['namespace' => 'Post', 'prefix' => 'post'], function (){
         Route::get('/{post}', 'IndexController')->name('post.index');
@@ -40,12 +45,6 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::group(['namespace' => 'Contact', 'prefix' => 'contact'], function (){
         Route::get('/', 'IndexController')->name('contact.index');
     });
-
-    /*Route::group(['namespace' => 'Auth'], function (){
-        Route::get('/login', 'LoginController')->name('auth.login');
-        Route::get('/register', 'RegisterController')->name('auth.register');
-        Route::get('/verify', 'VerificationController')->name('auth.verify');
-    });*/
     //ADMINISTRATOR
     Route::group(['middleware' => ['auth', 'admin']], function () {
         Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
